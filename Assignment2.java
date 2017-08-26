@@ -10,14 +10,23 @@ public class Assignment2//class for running the main parts of the program, like 
       {
          File file = new File(args[0]);//set the file to be the file whose name is in the run args in spot 0
          Scanner inFile = new Scanner(file);//make scanner
-
+      
          int n = getNFromFile(file, inFile);//get the n value to build the graph(also remove it from the file)
          int[][] matrix = readFromFile(file, inFile, n);//build the adjacency matrix that was given in the file, to be used in making
          //an easier representation(adjacency lists)
          
-         Graph g = new Graph(n, matrix);
-         //System.out.print(g.toString());
+         Graph g = new Graph(n, matrix);//build the graph
          
+         if(args[1].equalsIgnoreCase("DFS"))//if they select DFS Topo Sort
+         {
+            TopologicalSortDFS algoDFS = new TopologicalSortDFS(g);//make the DFS object(this also runs the sort in itself)
+            if(!(algoDFS.getTime() == -1))//if the time isnt -1(i set it to -1 if the graph wasnt valid)
+            {
+               System.out.println("Puzzle solve time: " + algoDFS.getTime() + " nanoseconds");//print out the solve time
+               System.out.print(algoDFS.toString());//print the solution
+            }
+         }
+         //else if(
       }
       catch(ArrayIndexOutOfBoundsException AIOBe)//explained by the error message
       {

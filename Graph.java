@@ -3,8 +3,9 @@ import java.util.*;
 
 public class Graph//class to represent the graph given in the file
 {
-   private int N;//number of nodes
-   private LinkedList<Integer> adjList[];//the adjacency list
+   int N;//number of nodes
+   LinkedList<Integer> adjList[];//the adjacency list
+   boolean valid;//whether or not this is a valid graph for topo sort
    
    public Graph(int n, int[][] matrix)//constructor
    {
@@ -16,6 +17,8 @@ public class Graph//class to represent the graph given in the file
       }
       
       populateGraph(matrix);//populate the graph properly with the values from the adjacency matrix
+      
+      valid = checkValidity(matrix);//set the validity of the graph
    }
    
    public void populateGraph(int[][] matrix)//method to populate the graph with the proper values from the adjacency matrix
@@ -32,12 +35,33 @@ public class Graph//class to represent the graph given in the file
       }
    }
    
+   public boolean checkValidity(int[][] matrix)//method to check if the graph is valid
+   {
+      boolean valid = true;//assume the graph is valid
+      
+      for(int i = 0; i < N; i++)//for row(the node to be compared to)
+      {
+         for(int j = 0; j < N; j++)//for column(each other node to compare to this node)
+         {
+            if(i == j)//if the node is being compared to itself
+            {
+               if(matrix[i][j] == 1)//if the value at said vertex is 1(adjacent)
+               {
+                  valid = false;//set valid to false, because that means that its adjacent to itself and cant be sorted
+               }
+            }
+         }
+      }
+      
+      return valid;//return the validity
+   }
+   
    public void addEdge(int n, int t)//method to add an edge
    {
       adjList[n].add(t);//add the target(t) node to the adjacency list of node n, which is in the main linkedlist adjList
    }
    
-   public String toString()
+   public String toString()//toString method for testing mostly
    {
       String returnVal = "Adjacency Lists:\n";//set initial message
       
