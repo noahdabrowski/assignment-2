@@ -26,7 +26,15 @@ public class Assignment2//class for running the main parts of the program, like 
                System.out.print(algoDFS.toString());//print the solution
             }
          }
-         //else if(
+         else if(args[1].equalsIgnoreCase("SRA"))//if they select SRA Topo Sort
+         {
+            TopologicalSortSRA algoSRA = new TopologicalSortSRA(g);//make the SRA object(this also runs the sort in itself)
+            if(!(algoSRA.getTime() == -1))//if the time isnt -1(i set it to -1 if the graph wasnt valid)
+            {
+               System.out.println("Puzzle solve time: " + algoSRA.getTime() + " nanoseconds");//print out the solve time
+               System.out.print(algoSRA.toString());//print the solution
+            }
+         }
       }
       catch(ArrayIndexOutOfBoundsException AIOBe)//explained by the error message
       {
@@ -36,7 +44,6 @@ public class Assignment2//class for running the main parts of the program, like 
       {
          System.out.println("Your file could not be found.");//neato error message
       }
-      
    }//end main
    
    public static int getNFromFile(File file, Scanner inFile)//method to get the n value from the file
@@ -45,7 +52,6 @@ public class Assignment2//class for running the main parts of the program, like 
       String garbage = inFile.nextLine();//get rid of the garbage line
       return n;//return n
    }
-   
    public static int[][] readFromFile(File file, Scanner inFile, int n)//method to read from the given file. Returns a 2d array
    {
       //the n value is already gone, and so is the garbage newline that it was on. We can start building the matrix immediately
@@ -66,8 +72,6 @@ public class Assignment2//class for running the main parts of the program, like 
          
          lineCount++;//increment the line count since we finished a line
       }
-      
       return temp;//return the adjacency matrix
    }
-   
 }//end Assignment2 class

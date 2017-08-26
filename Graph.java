@@ -17,7 +17,6 @@ public class Graph//class to represent the graph given in the file
       }
       
       populateGraph(matrix);//populate the graph properly with the values from the adjacency matrix
-      
       valid = checkValidity(matrix);//set the validity of the graph
    }
    
@@ -52,7 +51,6 @@ public class Graph//class to represent the graph given in the file
             }
          }
       }
-      
       return valid;//return the validity
    }
    
@@ -83,5 +81,4 @@ public class Graph//class to represent the graph given in the file
       }
       return returnVal;//return the string
    }
-   
 }//end Graph class

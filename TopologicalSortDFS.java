@@ -60,7 +60,7 @@ public class TopologicalSortDFS//topo sort using DFS
       }
       else//if the graph wasnt valid
       {
-         System.out.println("The graph entered is not valid. One or more of it's nodes is adjacent to itself. Or something like that.");//error message
+         System.out.print("The graph entered is not valid. One or more of it's nodes is adjacent to itself. Or something like that.");//error message
          return -1;//return an impossible time to make sure it quits
       }
    }
@@ -80,7 +80,7 @@ public class TopologicalSortDFS//topo sort using DFS
             topoSortRecur(i, visited, stack);//recur
          }
       }
-      stack.push(new Integer(n));//push current vertex to stack, storing result
+      stack.push(new Integer(n));//push current node to stack, storing result
    }
    
    public void setTime(long time)//method to easily set the time after an algorithm run
