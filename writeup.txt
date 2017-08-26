@@ -1,0 +1,44 @@
+Theoretical Worst Case:
+
+(N is for nodes and E is for edges)
+DFS: BigTheta(N + E)
+   This is because in my algorithm I look at each node, and all the edges for each node at the most.
+   
+SRA: BigTheta(N^2 + E)
+   I am not totally sure on this one. But i believe this is because I compare each node to each other(the N^2) but I also look at each edge(E).
+   I am pretty sure that this one is supposed to be faster, but I think I did something wrong. but it still works
+   
+
+Empirical Analysis:
+
+DFS:
+260900
+219745
+297146
+226163
+206907
+218235
+275625
+272982
+220878
+413060
+avg for 10 runs: 261164.1
+
+SRA:
+283931
+248817
+256369
+264298
+248440
+265808
+250706
+256370
+286197
+267319
+avg for 10 runs: 262825.5
+
+My empirical analysis does not really match up with the theoretical analysis.
+They look to have about the same runtime, but I feel like my implementation of SRA should be slower than the DFS implementation.
+The only major red flag that I can see that would make them so close to being the same is the last run of DFS was a bit of an outlier.
+
+Overall, the DFS search is faster with my current implementations. It could possibly be considered even faster if the sample size was larger.
